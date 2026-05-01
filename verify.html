@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Certificate Verification - Infotech</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+
+    .glass {
+      backdrop-filter: blur(15px);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .gradient-text {
+      background: linear-gradient(to right, #4f46e5, #06b6d4);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+  </style>
+</head>
+<body class="bg-gray-950 text-white">
+
+  <!-- Navbar -->
+  <nav class="flex justify-between items-center px-6 py-4 bg-gray-900/80 backdrop-blur-md sticky top-0">
+    <h1 class="text-xl font-bold gradient-text">Infotech</h1>
+    <a href="index.html" class="hover:text-cyan-400">Home</a>
+  </nav>
+
+  <!-- Header -->
+  <section class="text-center py-16">
+    <h2 class="text-4xl font-bold gradient-text">Certificate Verification</h2>
+    <p class="text-gray-400 mt-2">Enter certificate number to verify</p>
+  </section>
+
+  <!-- Verification Box -->
+  <div class="flex justify-center px-4">
+    <div class="glass p-8 rounded-2xl w-full max-w-md text-center">
+
+      <input id="certInput" type="text" placeholder="Enter Certificate Number"
+        class="w-full px-4 py-3 rounded-xl bg-gray-900 border border-gray-700 mb-4 outline-none" />
+
+      <button onclick="verifyCert()"
+        class="w-full bg-indigo-600 py-3 rounded-xl hover:bg-indigo-500 transition">
+        Verify
+      </button>
+
+      <!-- Result -->
+      <div id="result" class="mt-6 text-left"></div>
+
+    </div>
+  </div>
+
+  <script>
+    const students = {
+      "INF001": { name: "Rahul Patel", course: "Tally Prime", duration: "2 Months" },
+      "INF002": { name: "Priya Shah", course: "CCC", duration: "3 Months" },
+      "INF003": { name: "Amit Kumar", course: "Web Development", duration: "6 Months" }
+    };
+
+    function verifyCert() {
+      const input = document.getElementById("certInput").value.trim().toUpperCase();
+      const resultDiv = document.getElementById("result");
+
+      if (students[input]) {
+        const s = students[input];
+        resultDiv.innerHTML = `
+          <div class="mt-4 p-4 bg-green-600/20 border border-green-500 rounded-xl">
+            <p><strong>Name:</strong> ${s.name}</p>
+            <p><strong>Course:</strong> ${s.course}</p>
+            <p><strong>Duration:</strong> ${s.duration}</p>
+            <p class="text-green-400 font-bold">Status: Verified ✅</p>
+          </div>
+        `;
+      } else {
+        resultDiv.innerHTML = `
+          <div class="mt-4 p-4 bg-red-600/20 border border-red-500 rounded-xl">
+            <p class="text-red-400 font-bold">Invalid Certificate ❌</p>
+          </div>
+        `;
+      }
+    }
+  </script>
+
+</body>
+</html>

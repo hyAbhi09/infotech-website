@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Infotech Computer Education</title>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+
+    .glass {
+      backdrop-filter: blur(15px);
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .gradient-text {
+      background: linear-gradient(to right, #4f46e5, #06b6d4);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    /* 🔥 COURSE CARD DESIGN */
+.course-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover */
+.course-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* Title */
+.course-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+/* Tags */
+.tags {
+  margin-bottom: 10px;
+}
+
+.tags span {
+  display: inline-block;
+  background: #eef2ff;
+  color: #4f46e5;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  margin-right: 5px;
+}
+
+/* Text */
+.course-card p {
+  color: #64748b;
+  margin-bottom: 15px;
+}
+
+/* Button */
+.course-card button {
+  background: #4f46e5;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.course-card button:hover {
+  background: #4338ca;
+}
+
+/* Decorative Shape */
+.course-card::after {
+  content: "";
+  position: absolute;
+  right: -40px;
+  top: -40px;
+  width: 120px;
+  height: 120px;
+  background: rgba(99,102,241,0.1);
+  border-radius: 50%;
+}
+/* 🔥 CARD */
+.course-card {
+  background: white;
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover */
+.course-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* ICON */
+.course-card .icon {
+  width: 55px;
+  height: 55px;
+  background: linear-gradient(135deg, #4f46e5, #06b6d4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-size: 24px;
+  margin-bottom: 12px;
+  color: white;
+  box-shadow: 0 5px 15px rgba(79,70,229,0.3);
+}
+
+/* TITLE */
+.course-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+/* TAGS */
+.tags span {
+  background: #eef2ff;
+  color: #4f46e5;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  margin-right: 5px;
+}
+
+/* TEXT */
+.course-card p {
+  color: #64748b;
+  margin: 12px 0;
+}
+
+/* BUTTON */
+.course-card button {
+  background: linear-gradient(135deg, #4f46e5, #06b6d4);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.course-card button:hover {
+  transform: scale(1.05);
+}
+
+/* DECORATIVE BG */
+.course-card::after {
+  content: "";
+  position: absolute;
+  right: -40px;
+  top: -40px;
+  width: 120px;
+  height: 120px;
+  background: rgba(99,102,241,0.1);
+  border-radius: 50%;
+}
+  </style>
+</head>
+
+<body class="bg-gray-950 text-Black">
+
+ <!-- 🔥 ENQUIRY POPUP -->
+<div id="popupForm" class="fixed inset-0 bg-black/60 flex items-center justify-center hidden z-50">
+
+  <div id="popupContent" class="bg-white p-8 rounded-3xl w-[90%] max-w-md shadow-2xl relative animate-fadeIn">
+
+    <!-- ❌ Close Button -->
+    <button onclick="closePopup()" 
+      class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-red-100 text-gray-500 hover:text-red-500 transition">
+      ✕
+    </button>
+
+    <!-- 🎯 Heading -->
+    <h2 class="text-2xl font-bold text-center mb-5 text-gray-800">
+      Quick Enquiry
+    </h2>
+
+    <!-- FORM -->
+    <form id="enquiryForm" class="space-y-4">
+
+      <input type="text" placeholder="Full Name"
+        class="w-full p-3 rounded-xl border focus:ring-2 focus:ring-blue-400 outline-none transition" required>
+
+      <input type="text" placeholder="Phone Number"
+        class="w-full p-3 rounded-xl border focus:ring-2 focus:ring-blue-400 outline-none transition" required>
+
+      <select class="w-full p-3 rounded-xl border focus:ring-2 focus:ring-blue-400 outline-none">
+        <option>CCC</option>
+        <option>Tally</option>
+        <option>Excel</option>
+        <option>Web Dev</option>
+      </select>
+
+      <textarea placeholder="Message"
+        class="w-full p-3 rounded-xl border focus:ring-2 focus:ring-blue-400 outline-none"></textarea>
+
+      <button type="submit"
+        class="w-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white py-3 rounded-xl font-semibold hover:scale-105 transition">
+        Submit Now
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+
+<!-- ✅ NAVBAR WITH LOGO -->
+<nav class="flex justify-between items-center px-6 py-4 bg-gray-900/80 backdrop-blur-md sticky top-0 z-50">
+
+ <div class="flex items-center gap-3">
+  <h1 id="logo" class="text-2xl font-bold gradient-text tracking-wide cursor-pointer">
+    INFOTECH
+  </h1>
+</div>
+
+  <!-- Links -->
+  <div class="space-x-6 hidden md:flex">
+    <a href="index.html" class="text-cyan-400">Home</a>
+    <a href="courses.html" class="hover:text-cyan-400">Courses</a>
+    <a href="verify.html" class="hover:text-cyan-400">Verify</a>
+    <a href="contact.html" class="hover:text-cyan-400">Contact</a>
+    <a href="enquiry.html" class="hover:text-cyan-400">Enquiry</a>
+  </div>
+
+  <!-- Button -->
+  <a href="contact.html">
+    <button class="bg-cyan-500 px-4 py-2 rounded-xl hover:bg-cyan-400">
+      Admission Open
+    </button>
+  </a>
+
+</nav>
+
+<!-- ✅ HERO SECTION -->
+<section class="h-screen flex flex-col justify-center items-center text-center px-6">
+
+  <h1 id="heroLogo" class="hero-logo">
+  INFOTECH
+</h1>
+  
+  <h2 class="text-4xl md:text-6xl font-bold mb-4">
+    Upgrade Your <span class="gradient-text">Skills</span>
+  </h2>
+
+  <p class="text-gray-400 max-w-xl mb-6">
+    Join Infotech Computer Education and start your journey in IT, Accounting & Development.
+  </p>
+
+  <div class="space-x-4">
+    <button class="bg-indigo-600 px-6 py-3 rounded-2xl hover:bg-indigo-500">Join Now</button>
+    <a href="courses.html">
+      <button class="border border-gray-600 px-6 py-3 rounded-2xl hover:bg-gray-800">
+        View Courses
+      </button>
+    </a>
+  </div>
+
+</section>
+
+<section class="px-6 py-16 bg-gray-50">
+
+  <h2 class="text-3xl font-bold text-center mb-2">Popular Courses</h2>
+  <p class="text-center text-gray-500 mb-10">
+    Choose your course and start learning today
+  </p>
+
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+    <!-- CCC -->
+    <div class="course-card">
+      <div class="icon">💻</div>
+
+      <h3>CCC</h3>
+
+      <div class="tags">
+        <span>Basic</span>
+        <span>Computer</span>
+      </div>
+
+      <p>Learn computer fundamentals</p>
+
+      <button>Explore →</button>
+    </div>
+
+    <!-- Tally -->
+    <div class="course-card">
+      <div class="icon">📊</div>
+
+      <h3>Tally Prime</h3>
+
+      <div class="tags">
+        <span>GST</span>
+        <span>Accounting</span>
+      </div>
+
+      <p>Real business accounting training</p>
+
+      <button>Explore →</button>
+    </div>
+
+    <!-- Web Dev -->
+    <div class="course-card">
+      <div class="icon">🌐</div>
+
+      <h3>Web Development</h3>
+
+      <div class="tags">
+        <span>HTML</span>
+        <span>JS</span>
+      </div>
+
+      <p>Build websites & freelancing</p>
+
+      <button>Explore →</button>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- Courses -->
+<section class="py-16 px-6">
+  <h2 class="text-3xl font-bold text-center mb-10 gradient-text">Our Courses</h2>
+
+  <div class="grid md:grid-cols-4 gap-6">
+
+    <div class="glass p-6 rounded-2xl hover:scale-105 transition">
+      <h3 class="text-xl font-semibold mb-2">CCC</h3>
+      <p class="text-gray-400">Basic computer course</p>
+    </div>
+
+    <div class="glass p-6 rounded-2xl hover:scale-105 transition">
+      <h3 class="text-xl font-semibold mb-2">Tally</h3>
+      <p class="text-gray-400">Accounting & GST</p>
+    </div>
+
+    <div class="glass p-6 rounded-2xl hover:scale-105 transition">
+      <h3 class="text-xl font-semibold mb-2">Excel</h3>
+      <p class="text-gray-400">Office productivity</p>
+    </div>
+
+    <div class="glass p-6 rounded-2xl hover:scale-105 transition">
+      <h3 class="text-xl font-semibold mb-2">Web Dev</h3>
+      <p class="text-gray-400">HTML, CSS, JS</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="py-16 bg-gray-900">
+  <h2 class="text-3xl font-bold text-center mb-10">Why Choose Us</h2>
+
+  <div class="grid md:grid-cols-4 gap-6 px-6">
+    <div class="text-center"><h3 class="text-lg font-semibold">Expert Faculty</h3></div>
+    <div class="text-center"><h3 class="text-lg font-semibold">Practical Training</h3></div>
+    <div class="text-center"><h3 class="text-lg font-semibold">Certificate</h3></div>
+    <div class="text-center"><h3 class="text-lg font-semibold">Job Support</h3></div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-10 text-center bg-gray-950 border-t border-gray-800">
+  <p>📍 A 208-209, Umiya Complex, Kamrej Char Rasta</p>
+  <p>📞 9033280695 | 7984209957</p>
+  <p class="text-gray-500 mt-2">© 2026 Infotech Computer Education</p>
+</footer>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>                                                                                          

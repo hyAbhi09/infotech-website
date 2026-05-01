@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Enquiry - Infotech</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+
+    .glass {
+      backdrop-filter: blur(15px);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+  </style>
+</head>
+
+<body class="bg-gray-950 text-white">
+
+<!-- NAVBAR -->
+<nav class="flex justify-between items-center px-6 py-4 bg-gray-900/80 backdrop-blur-md">
+  <h1 class="text-xl font-bold text-cyan-400">Infotech</h1>
+
+  <div class="space-x-6">
+    <a href="index.html">Home</a>
+    <a href="courses.html">Courses</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<!-- FORM SECTION -->
+<section class="min-h-screen flex items-center justify-center px-6">
+
+  <div class="glass p-10 rounded-3xl w-full max-w-3xl shadow-2xl">
+
+    <h2 class="text-3xl font-bold text-center mb-8">Enquiry Form</h2>
+
+    <form class="grid gap-6">
+
+      <input type="text" placeholder="Full Name"
+        class="p-3 rounded-xl bg-gray-900 border border-gray-700 focus:ring-2 focus:ring-cyan-400 outline-none">
+
+      <input type="tel" placeholder="Phone Number"
+        class="p-3 rounded-xl bg-gray-900 border border-gray-700 focus:ring-2 focus:ring-cyan-400 outline-none">
+
+      <input type="email" placeholder="Email"
+        class="p-3 rounded-xl bg-gray-900 border border-gray-700 focus:ring-2 focus:ring-cyan-400 outline-none">
+
+      <select class="p-3 rounded-xl bg-gray-900 border border-gray-700">
+        <option>Select Course</option>
+        <option>CCC</option>
+        <option>Tally</option>
+        <option>Excel</option>
+        <option>Web Development</option>
+        <option>Python</option>
+      </select>
+
+      <textarea placeholder="Message"
+        class="p-3 rounded-xl bg-gray-900 border border-gray-700"></textarea>
+
+      <button class="bg-cyan-500 py-3 rounded-xl hover:bg-cyan-400">
+        Submit Enquiry
+      </button>
+
+    </form>
+
+  </div>
+
+</section>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
